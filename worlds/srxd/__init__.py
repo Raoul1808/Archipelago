@@ -54,5 +54,8 @@ class SrxdWorld(World):
 
     def fill_slot_data(self):
         return {
-            "deathLink": self.options.death_link.value
+            "deathLink": self.options.death_link.value,
+            "clearCondition": self.options.clear_condition.value,
+            "medalRequirement": self.options.medal_requirement.value,
+            "targetAccuracy": self.options.target_accuracy.value,
         }
