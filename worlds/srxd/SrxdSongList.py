@@ -9,8 +9,9 @@ def load_text_file(name: str) -> str:
 
 
 class SrxdSongList:
-    songs = Dict[int, str]
-    starting_songs = [int]
+    songs: Dict[int, str]
+    starting_songs: [int]
+    boss_song: int
 
     def __init__(self):
         songs = []
@@ -21,8 +22,9 @@ class SrxdSongList:
             song_id = int(elems[0])
             song_name = elems[1]
             songs.append((song_id, song_name))
-        song_indices = list(range(len(songs)))
+        song_indices = list(range(1, len(songs) + 1))
         for _ in range(3):
             starting_songs.append(song_indices.pop(random.randint(0, len(song_indices) - 1)))
+        self.boss_song = starting_songs.pop(random.randint(0, len(starting_songs) - 1))
         SrxdSongList.songs = songs
         SrxdSongList.starting_songs = starting_songs

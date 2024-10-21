@@ -30,9 +30,9 @@ class SrxdClearCondition(Choice):
 
     option_default = 0
     option_medal = 1
-    option_accuracy = 2
-    option_full_combo = 3
-    option_perfect_full_combo = 4
+    # option_accuracy = 2
+    option_full_combo = 2
+    option_perfect_full_combo = 3
 
 
 class SrxdMedalRequirement(Choice):
@@ -61,10 +61,20 @@ class SrxdTargetAccuracy(Range):
     default = 80
 
 
+class SrxdGoalRequirement(Range):
+    """Sets the amount of clears required to unlock access to the boss song."""
+    display_name = "Clears Needed to Win"
+
+    range_start = 20
+    range_end = 67
+    default = 30
+
+
 @dataclass
 class SrxdOptions(PerGameCommonOptions):
     death_link: SrxdDeathLink
     clear_condition: SrxdClearCondition
     medal_requirement: SrxdMedalRequirement
     target_accuracy: SrxdTargetAccuracy
+    goal_requirement: SrxdGoalRequirement
 #     enabled_dlc: SrxdDLC

@@ -34,7 +34,7 @@ class SrxdWorld(World):
 
     def generate_early(self) -> None:
         for song_id in self.song_list.starting_songs:
-            _, name = self.song_list.songs[song_id]
+            _, name = self.song_list.songs[song_id - 1]
             self.multiworld.push_precollected(self.create_item(name))
 
     def create_item(self, name: str) -> SrxdItem:
@@ -49,8 +49,9 @@ class SrxdWorld(World):
             menu_region.locations.append(loc)
 
     def create_items(self) -> None:
-        for _, song in self.song_list.songs:
-            self.multiworld.itempool.append(self.create_item(song))
+        for song_id, song_name in self.song_list.songs:
+            if song_id != self.song_list.boss_song:
+                self.multiworld.itempool.append(self.create_item(song_name))
 
     def fill_slot_data(self):
         return {
@@ -58,4 +59,6 @@ class SrxdWorld(World):
             "clearCondition": self.options.clear_condition.value,
             "medalRequirement": self.options.medal_requirement.value,
             "targetAccuracy": self.options.target_accuracy.value,
+            "bossSong": self.song_list.boss_song,
+            "clearsRequiredForGoal": self.options.goal_requirement.value,
         }
