@@ -75,6 +75,6 @@ class SrxdOptions(PerGameCommonOptions):
     death_link: SrxdDeathLink
     clear_condition: SrxdClearCondition
     medal_requirement: SrxdMedalRequirement
-#     target_accuracy: SrxdTargetAccuracy
+    target_accuracy: SrxdTargetAccuracy
     goal_requirement: SrxdGoalRequirement
 #     enabled_dlc: SrxdDLC
