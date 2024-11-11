@@ -59,8 +59,9 @@ class SrxdWorld(World):
 
     def create_items(self) -> None:
         for song_id, song_name in self.song_list.songs.items():
-            if song_id != self.boss_song and song_id not in self.starting_songs:
-                self.multiworld.itempool.append(self.create_item(song_name))
+            # TODO: add filler items and traps to fill up item amounts
+            # if song_id != self.boss_song and song_id not in self.starting_songs:
+            self.multiworld.itempool.append(self.create_item(song_name))
 
     def fill_slot_data(self):
         return {
